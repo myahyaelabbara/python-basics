@@ -15,8 +15,10 @@ print(f"Price of the third book: {books[2]['price']}")
 books.append({"title": "The Requiem Red", "price": 22.65, "rating": 1})
 print(f"After adding one: {len(books)} books")
 
-total = (books[0]["price"] + books[1]["price"] + books[2]["price"]
-         + books[3]["price"] + books[4]["price"] + books[5]["price"])
-print(f"Average price: {total / len(books):.2f}") 
+total = 0
+for book in books:
+    total += book["price"]
+print(f"Average price: {total / len(books):.2f}")
+
 
 
