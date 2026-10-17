@@ -16,3 +16,25 @@ with open("books.csv", "w", newline="", encoding="utf-8") as f:
     writer.writerows(books)
 
 print(f"Saved {len(books)} books to books.csv") 
+# read_books.py: loads books.csv back into Python and analyzes it
+import csv
+
+with open("books.csv", "r", encoding="utf-8") as f:
+    reader = csv.DictReader(f)
+    books = list(reader)
+
+print(f"Loaded {len(books)} books")
+print(books[0])
+
+total = 0
+high_rated = 0
+for book in books:
+    price = float(book["price"])
+    rating = int(book["rating"])
+    total += price
+    if rating >= 4:
+        high_rated += 1
+
+average = total / len(books)
+print(f"Average price: {average:.2f}")
+print(f"Books rated 4 or more: {high_rated}")
